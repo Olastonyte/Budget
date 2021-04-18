@@ -1,0 +1,117 @@
+Accbalance = 1000
+
+def init():
+
+
+    isValidOptionSelected = False
+    print ('**********Welcome**********')
+    print ('What would you like to do to your budget?')
+
+    while isValidOptionSelected == False:
+
+        response = int(input('Deposit: (1) ' '      withraw: (2) \n' 'Transfer: (3) ' '     Check Balance: (4) \n'))
+        if (response == 1):
+            isValidOptionSelected = True
+            Deposit ()
+        elif (response == 2):
+            isValidOptionSelected = True
+            withdraw ()
+        elif (response == 3):
+            isValidOptionSelected = True
+            Transfer ()
+        elif (response == 4):
+            isValidOptionSelected = True
+            Checkbalance ()
+        else:
+            print ('invalid option')
+    
+    
+    
+def Deposit ():
+
+    print ('Which category will you like to deposit funds into?')
+
+    response = int(input('Food: (1)\n' 'Clothing: (2) \n' 'Entertainment: (3) \n'))
+    if (response == 1):
+        print ('Provide funds for food')
+        add_fundsfood = int(input('Add funds: \n '))
+        print ('Your balance is', Accbalance + add_fundsfood)
+    elif (response == 2):
+        print ('Provide funds for Clothing')
+        add_fundsclothing = int(input('Add funds: \n '))
+        print ('Your balance is', Accbalance + add_fundsclothing)
+    elif (response == 3):
+        print ('Provide funds for Entertainment')
+        add_fundsent = int(input('Add funds: \n '))
+        print ('Your balance is', Accbalance + add_fundsent)
+    else:
+        print ('invalid option')
+        
+
+def withdraw ():
+    print ('Which category will you like to withdraw funds from?')
+    response = int(input('Food: (1)\n' 'Clothing: (2) \n' 'Entertainment: (3) \n'))
+    if (response == 1):
+        print ('Withdraw funds from food')
+        withdrawfundsfood = int(input('Withdraw funds: \n '))
+        if (withdrawfundsfood > Accbalance):
+            print ('Insufficient Balance')
+        else:
+            print ('Your balance is', Accbalance - withdrawfundsfood)
+    elif (response == 2):
+        print ('Withdraw funds from Clothing')
+        withdrawfundscloth = int(input('Withdraw funds: \n '))
+        if (withdrawfundscloth > Accbalance):
+            print ('Insufficient Balance')
+        else:
+            print ('Your balance is', Accbalance - withdrawfundscloth)
+        
+    elif (response == 3):
+        print ('Withdraw funds from Entertainment')
+        withdrawfundsent = int(input('Withdraw funds: \n '))
+        if (withdrawfundsent > Accbalance):
+            print ('Insufficient Balance')
+        else:
+            print ('Your balance is', Accbalance - withdrawfundsent)
+    else:
+        print ('invalid option')
+
+    
+
+def Transfer():
+    print ('Transfer From which category')
+    print ('Which category will you like to transfer funds from?')
+    response = int(input('Food: (1)\n' 'Clothing: (2) \n' 'Entertainment: (3) \n'))
+    if (response == 1):
+        print ('tranfer funds from food')
+        print ('Which category will you like to transfer funds to?')
+        resp = int(input('Clothing: (1) \n' 'Entertainment: (2) \n'))
+        transferfundsfood = int(input('Transfer: \n '))
+        print ('Transfer completed')
+        
+    elif (response == 2):
+        print ('tranfer funds from Clothing')
+        print ('Which category will you like to transfer funds to?')
+        resp = int(input('Food: (1) \n' 'Entertainment: (2) \n'))
+        transferfundsfood = int(input('Transfer: \n '))
+        print ('Transfer completed')
+    
+        
+    elif (response == 3):
+        print ('tranfer funds from Entertainment')
+        print ('Which category will you like to transfer funds to?')
+        resp = int(input('Food: (1) \n' 'Clothing: (2) \n'))
+        transferfundsfood = int(input('Transfer: \n '))
+        print ('Transfer completed')
+    else:
+        print ('invalid option')
+
+
+
+
+def Checkbalance():
+    print ('Your balance is:', Accbalance)
+
+
+
+init()
