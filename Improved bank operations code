@@ -1,0 +1,119 @@
+#register
+# - First name, Last name, password, email
+# - generate user account number
+
+#login
+# - accountnumber and password
+
+#bankoperation
+
+import random
+
+
+database = {} #register
+
+# usersdatabase = {
+#     '1234567890':'qwert', 
+#     '0987654321': 'yuiop',
+#      '5432109876': 'asdfg'
+#     }
+def init():
+
+    isValidOptionSelected = False
+    print ('welcome to Zen Bank')
+
+    while isValidOptionSelected == False:
+
+        haveaccount  = int(input('Do you have an account with us: (1) Yes (2) No \n'))
+
+        if (haveaccount == 1):
+            isValidOptionSelected = True
+            login()
+        elif (haveaccount == 2):
+            isValidOptionSelected = True
+            register()
+        else:
+            print ('invalid option')
+
+
+
+def login():
+    print ('login to your account')
+    useraccountNumber = int(input("What is your account number? \n"))
+    password = input('Input your password\n')
+    for accountnumber,user in database.items():
+        if(accountnumber == useraccountNumber):
+            if(user[3] == password):
+                print("Welcome %s %s " % ( user[0], user[1] ) )
+                bankoperation()
+               
+    else:
+        print('Invalid account or password')
+        print ('Register an account with us')
+        register()
+    
+ 
+         
+def register():
+    print(' ********Register******** ')
+    email = input('what is your email? \n' )
+    first_name = input('what is your first name? \n')
+    last_name = input('what is your last name? \n')
+    Password =  input('create a new password \n')
+
+    accountnumber = generateaccountnumber()
+
+    database[accountnumber] = [first_name, last_name, email,Password]
+    
+    print("Your account number is: %d" % accountnumber)
+
+    login()
+    
+
+def bankoperation():
+        import time;
+        localtime = time.asctime(time.localtime(time.time()))
+        print ('Current time:', localtime)
+        
+        print('These are the available option')
+               
+        print('1. Withrawal')
+        print('2. Cash Deposit')
+        print('3. Complaint')
+        print('4. Log out')
+        selectedoption = int(input('please select an option:\n'))
+        if (selectedoption==1):
+            Withdraw = int(input('How much would you like to withdraw?: \n '))
+            print('TAKE YOUR CASH')
+
+            login()
+
+        elif (selectedoption==2):
+            Deposit = int(input('How much would you like to deposit?: \n'))
+    
+            print('current balance:',Deposit, 'Naira' )
+
+            bankoperation()
+
+        elif (selectedoption==3):
+            str (input('What issue will you like to report?: \n'))
+            print ("Thank you for contacting us")
+            bankoperation()
+
+        elif (selectedoption==4):
+            print ("Thank you for banking with us") 
+            login ()  
+    
+        else:
+            print('invalid option slected, please try again')
+        
+    
+         
+
+
+def generateaccountnumber():
+    print ('Generating Account Number')
+    return random.randrange(1111111111,9999999999)
+
+####  ACTUAL BANKING SYSTEM ####
+init()
